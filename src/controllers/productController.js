@@ -12,12 +12,13 @@ const { isValidRequestBody, isValidObjectId, isValid } = require('../utils/utils
 
 const createProduct = async function (req, res) {
     try {
+        
         let data = req.body;
         if (!isValidRequestBody(data)) {
             return res.status(400).send({ status: false, message: "Please enter data in body" });
         }
 
-        let { productName, qtyPerUnit, unitPrice, unitInStock, discontinued } = data;
+        let { productName, qtyPerUnit, unitPrice, unitInStock, discontinued, categoryId } = data;
 
         /* ****************** productName Validation ****************** */
 
@@ -25,6 +26,12 @@ const createProduct = async function (req, res) {
             return res
               .status(400)
               .send({ status: false, message: "Provide the productName " });
+        }
+
+        let checkproductName = await productModel.findOne({ productName: productName.toLowerCase() });
+        if (checkproductName) {
+            return res.status(400)
+            .send({ status: false, message: "Product with this title is already present"});
         }
       
         /* ****************** qtyPerUnit Validation ****************** */
@@ -241,7 +248,7 @@ const updateProductbyId = async function (req, res) {
           return res
             .status(400)
             .send({ status: false, message: "unitInStock should not be empty" });
-            
+
         if (isNaN(parseInt(unitInStock)))
           return res
             .status(400)

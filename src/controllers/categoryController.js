@@ -22,6 +22,12 @@ const createCategory = async function (req, res) {
               .send({ status: false, message: "Provide the categoryName " });
         }
 
+        let checkcategoryName = await categoryModel.findOne({ categoryName: categoryName.toLowerCase() });
+        if (checkcategoryName) {
+            return res.status(400)
+            .send({ status: false, message: "This category is already present"});
+        }
+
         let savedData = await categoryModel.create(data)
         return res.status(201).send({ status: true, data: savedData });
 
