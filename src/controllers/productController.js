@@ -19,10 +19,6 @@ const createProduct = async function (req, res) {
 
         let { productName, qtyPerUnit, unitPrice, unitInStock, discontinued } = data;
 
-        // if ( !productName || !qtyPerUnit || !unitPrice || !unitInStock || !discontinued ) {
-        //     return res.status(400).send({ status: false, message: "please fill all fields properly" });
-        // }
-      
         /* ****************** productName Validation ****************** */
 
         if (!isValid(productName)) {
@@ -31,16 +27,6 @@ const createProduct = async function (req, res) {
               .send({ status: false, message: "Provide the productName " });
         }
       
-        // let checkProductName = await productModel.findOne({ title: title.toLowerCase() });
-        // if (checkProductName) {
-        //     return res.status(400).send({
-        //       status: false,
-        //       message: "Product with this name is already present",
-        //     });
-        // };
-
-        // data.productName = productName.toLowerCase();
-
         /* ****************** qtyPerUnit Validation ****************** */
 
         if (!isValid(qtyPerUnit)) {
@@ -188,7 +174,7 @@ const updateProductbyId = async function (req, res) {
       if (!isValidRequestBody(body)) {
         return res
           .status(400)
-          .send({ status: false, message: "Pls enter Some Data To update" });
+          .send({ status: false, message: "Please enter some data To update" });
       }
   
       let { productName, qtyPerUnit, unitPrice, unitInStock, discontinued } = body;
@@ -198,6 +184,7 @@ const updateProductbyId = async function (req, res) {
           return res
             .status(400)
             .send({ status: false, message: "productName should not be empty" });
+
         if (!isValid(productName))
           return res
             .status(400)
@@ -224,6 +211,7 @@ const updateProductbyId = async function (req, res) {
           return res
             .status(400)
             .send({ status: false, message: "qtyPerUnit should not be empty" });
+
         if (isNaN(parseInt(qtyPerUnit)))
           return res
             .status(400)
@@ -238,6 +226,7 @@ const updateProductbyId = async function (req, res) {
           return res
             .status(400)
             .send({ status: false, message: "unitPrice should not be empty" });
+
         if (isNaN(parseInt(unitPrice)))
           return res
             .status(400)
@@ -252,6 +241,7 @@ const updateProductbyId = async function (req, res) {
           return res
             .status(400)
             .send({ status: false, message: "unitInStock should not be empty" });
+            
         if (isNaN(parseInt(unitInStock)))
           return res
             .status(400)
