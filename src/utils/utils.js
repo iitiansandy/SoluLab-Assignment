@@ -15,21 +15,4 @@ const isValid = (value) => {
     return true;
 }
 
-const isValidEmail = function (email) {
-    let regex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
-    return regex.test(email);
-};
-
-const moblieRegex = function(mobile) {
-    let regex =
-        /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([-]?)\d{3}([-]?)\d{4})$/;
-    return regex.test(mobile);
-};
-
-const isValidPassword = (password) => {
-    let regexPassword =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
-    return regexPassword.test(password);
-};
-
-module.exports = { isValidRequestBody, isValidObjectId, isValid, isValidEmail, moblieRegex, isValidPassword };
+module.exports = { isValidRequestBody, isValidObjectId, isValid };
