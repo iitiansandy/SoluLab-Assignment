@@ -1,10 +1,10 @@
 # SoluLab-Assignment </br>
 
 <h3>Make sure to read the whole document carefully and follow the guidelines in it.</h3> </br>
-Preface: Build a RESTful API that can /create/read/update/delete Product and Category data from a
+<h3>Preface:</h3> Build a <strong>RESTful API</strong> that can /create/read/update/delete Product and Category data from a
 persistence database.</br>
 <h3>Product Model:</h3></br>
-{
+{</br>
 productId : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Product ID</br>
 productName : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Product Name</br>
 qtyPerUnit : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Quantity of the Product</br>
@@ -14,7 +14,7 @@ discontinued : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Boolean (yes/no)</br>
 categoryId : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Category ID</br>
 }
 <h3>Category Model:</h3></br>
-{
+{</br>
 categoryId : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Category ID</br>
 categoryName : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Category Name</br>
 }
