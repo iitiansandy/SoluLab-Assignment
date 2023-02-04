@@ -7,17 +7,14 @@ const categoryController = require("../controllers/categoryController");
 /* ++++++++++++++++++++++++++ Product APIs ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 router.post("/product", productController.createProduct);
+router.get("/product/:productId", productController.getProductbyId);
 router.get("/product", productController.getProduct);
-router.put("/product/:productId", productController.updateProduct);
-router.delete("/product/:productId", productController.deleteProduct);
+router.put("/product/:productId", productController.updateProductbyId);
+router.delete("/product/:productId", productController.deleteProductbyId);
 
 
 /* ++++++++++++++++++++++++++ Category APIs ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 router.post("/category", categoryController.createCategory);
-router.get("/category", categoryController.getCategory);
-router.put("/category/:categoryId", categoryController.updateCategory);
-router.delete("/category/:categoryId", categoryController.deleteCategory);
-
 
 module.exports = router;

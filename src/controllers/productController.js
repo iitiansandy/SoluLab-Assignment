@@ -1,6 +1,6 @@
 const productModel = require("../models/productModel");
 
-const { isValidRequestBody, isValidObjectId, isValid, isValidEmail, isValidPassword, moblieRegex } = require('../utils/utils');
+const { isValidRequestBody, isValidObjectId, isValid } = require('../utils/utils');
 
 
 
@@ -10,18 +10,18 @@ const { isValidRequestBody, isValidObjectId, isValid, isValidEmail, isValidPassw
 
 
 
-const createProduct = async (req, res) => {
+const createProduct = async function (req, res) {
     try {
         let data = req.body;
         if (!isValidRequestBody(data)) {
-            return res.status(400).send({ status: false, message: " Enter data in body" });
+            return res.status(400).send({ status: false, message: "Please enter data in body" });
         }
 
         let { productName, qtyPerUnit, unitPrice, unitInStock, discontinued } = data;
 
-        if ( !productName || !qtyPerUnit || !unitPrice || !unitInStock || !discontinued ) {
-            return res.status(400).send({ status: false, message: "please fill all field properly" });
-        }
+        // if ( !productName || !qtyPerUnit || !unitPrice || !unitInStock || !discontinued ) {
+        //     return res.status(400).send({ status: false, message: "please fill all fields properly" });
+        // }
       
         /* ****************** productName Validation ****************** */
 
@@ -31,15 +31,15 @@ const createProduct = async (req, res) => {
               .send({ status: false, message: "Provide the productName " });
         }
       
-        let checkProductName = await productModel.findOne({ title: title.toLowerCase() });
-        if (checkProductName) {
-            return res.status(400).send({
-              status: false,
-              message: "Product with this name is already present",
-            });
-        };
+        // let checkProductName = await productModel.findOne({ title: title.toLowerCase() });
+        // if (checkProductName) {
+        //     return res.status(400).send({
+        //       status: false,
+        //       message: "Product with this name is already present",
+        //     });
+        // };
 
-        data.productName = productName.toLowerCase();
+        // data.productName = productName.toLowerCase();
 
         /* ****************** qtyPerUnit Validation ****************** */
 
@@ -79,6 +79,12 @@ const createProduct = async (req, res) => {
               .status(400)
               .send({ status: false, message: "unitInStock Must be in Numbers" });
           }
+
+          if (!isValid(discontinued)) {
+            return res
+              .status(400)
+              .send({ status: false, message: "discontinued is required" });
+          }
         
         let savedData = await productModel.create(data)
         return res.status(201).send({ status: true, data: savedData });
@@ -102,7 +108,7 @@ const getProductbyId = async function (req, res) {
       if (!isValidObjectId(Pid)) {
         return res.status(400).send({
           status: false,
-          message: "Invalid Product ID please Provide Valid Credential",
+          message: "Invalid Product ID please Provide Valid Product Id",
         });
       }
   
@@ -133,7 +139,7 @@ const getProductbyId = async function (req, res) {
 
 
 
-const getProduct = async (req, res) => {
+const getProduct = async function (req, res) {
     try {
 
         let products = await productModel.find();
@@ -192,7 +198,7 @@ const updateProductbyId = async function (req, res) {
           return res
             .status(400)
             .send({ status: false, message: "productName should not be empty" });
-        if (!isValidTName(productName))
+        if (!isValid(productName))
           return res
             .status(400)
             .send({ status: false, message: "Enter Valid productName Name" });
@@ -209,7 +215,7 @@ const updateProductbyId = async function (req, res) {
           .filter((e) => e)
           .join(" ");
 
-        data.title = productName1.toLowerCase();
+        data.productName = productName1.toLowerCase();
       }
   
       
