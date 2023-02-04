@@ -19,7 +19,7 @@ categoryId : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Category ID</br>
 categoryName : xxx, &nbsp;&nbsp;&nbsp;&nbsp; // Category Name</br>
 }
 <h3>Functionality:</h3></br>
-● The API should follow typical RESTful API design patterns.</br>
+● The API should follow typical <strong>RESTful API</strong> design patterns.</br>
 ● The data should be saved in the DB.</br>
 ● Category ID in product table should be referenced in the category table.</br>
 ● Provide proper unit tests.</br>
@@ -39,12 +39,12 @@ category should be fetched in the response)</br>
 ● Provide proper readme which includes steps to setup the code in any system, API documentation
 (Postman documentation link is preferred).</br>
 ● Candidate needs to provide the github link and the candidate has to make his repository private.
-Tech stack:</br>
-● Use Node.js and any framework.</br>
-● Use any DB. NoSQL DB is preferred.</br>
+<h3>Tech stack:</h3></br>
+● Use <strong>Node.js</strong> and any framework.</br>
+● Use any DB. <strong>NoSQL DB</strong> is preferred.</br>
 <h3>Bonus Points:</h3></br>
-● If you are familiar with ES6 standards then it will be a bonus point for you.</br>
-● If you can use aggregation for /read query for fetching the data from multiple tables then it would
+● If you are familiar with <strong>ES6</strong> standards then it will be a bonus point for you.</br>
+● If you can use <strong>aggregation</strong> for /read query for fetching the data from multiple tables then it would
 be considered as a bonus point.</br>
 ● If you follow the good practices of the Node js for coding standard/folder structure then it would
 be considered as a bonus point.</br>
