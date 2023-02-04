@@ -55,4 +55,16 @@ skills and problem solving skills.</br>
 ● Good use of current Node.js & API design best practices.</br>
 ● Good testing approach.</br>
 ● Extensible code.</br>
-<h3>NOTE: Candidate should not be able for further rounds if we found plagiarism.</h3>
+<h3>NOTE: Candidate should not be able for further rounds if we found plagiarism.</h3></br>
+
+## Available Scripts
+
+In the project directory, you can run:</br>
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your <strong>browser</strong> or in any API Testing Tool like <strong>Postman</strong>.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
