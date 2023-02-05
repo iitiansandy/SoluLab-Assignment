@@ -1,5 +1,5 @@
 const productModel = require("../models/productModel");
-
+const categoryModel = require("../models/categoryModel");
 const { isValidRequestBody, isValidObjectId, isValid } = require('../utils/utils');
 
 
@@ -78,7 +78,19 @@ const createProduct = async function (req, res) {
               .status(400)
               .send({ status: false, message: "discontinued is required" });
           }
+
         
+          let category = await categoryModel.findOne({ categoryId: categoryId })
+
+          if (!category) {
+              return res.status(404).send({ status: false, msg: "categoryId not found in category collection" })
+          }
+          // let uniqCategory = await productModel.findOne({ categoryId: categoryId });
+  
+          // if (uniqCategory) {
+          //     return res.status(400).send({ status: false, message: "Category already created with this categoryID" })
+          // }
+
         let savedData = await productModel.create(data)
         return res.status(201).send({ status: true, data: savedData });
 
