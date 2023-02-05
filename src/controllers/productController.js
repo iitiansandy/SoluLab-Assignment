@@ -85,12 +85,7 @@ const createProduct = async function (req, res) {
           if (!category) {
               return res.status(404).send({ status: false, msg: "categoryId not found in category collection" })
           }
-          // let uniqCategory = await productModel.findOne({ categoryId: categoryId });
-  
-          // if (uniqCategory) {
-          //     return res.status(400).send({ status: false, message: "Category already created with this categoryID" })
-          // }
-
+         
         let savedData = await productModel.create(data)
         return res.status(201).send({ status: true, data: savedData });
 
@@ -152,8 +147,8 @@ const getProduct = async function (req, res) {
 
         return res.status(200).send({ status: true, data: products });
 
-    } catch (error) {
-        res.status(500).send({ status: false, message: error.message });
+    } catch (err) {
+        res.status(500).send({ status: false, message: err.message });
     }
 };
 
