@@ -115,7 +115,7 @@ const getProductbyId = async function (req, res) {
       const findProductDb = await productModel.findOne({
         _id: Pid,
         isDeleted: false,
-      }).populate("categoryId");
+      }).populate("categoryId", "categoryName");
   
       if (!findProductDb) {
         return res.status(404).send({ status: false, message: "Product Not Found" });
@@ -142,7 +142,7 @@ const getProductbyId = async function (req, res) {
 const getProduct = async function (req, res) {
     try {
 
-        let products = await productModel.find().populate("categoryId");
+        let products = await productModel.find().populate("categoryId", "categoryName");
         if (products.length == 0) return res.status(404).send({ status: false, message: "There are no products." });
 
         return res.status(200).send({ status: true, data: products });
